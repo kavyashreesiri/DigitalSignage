@@ -1,0 +1,100 @@
+ .navbar {
+    margin-bottom: 0;
+    background-color: #0e3558;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: white !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #0e3558 !important;
+    background-color: white !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: white !important;
+  }
+.logo {
+    color: #0e3558;
+    font-size: 200px;
+  }
+  .container-fluid {
+    padding: 60px 50px;
+  }
+
+  .logo-small {
+    color: #0e3558;
+    font-size: 50px;
+  }
+@media screen and (orientation: portarit){
+  .container{
+      width: 100%;
+  }
+}
+ @media screen and (max-width: 480px) {
+    .logo {
+      font-size: 150px;
+    }
+}
+
+.panel {
+    border: 1px solid #0e3558; 
+    
+    border-radius:0 !important;
+    transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+    border: 1px solid #0e3558;
+    background-color: #fff !important;
+    color: #0e3558;
+  }
+  .panel-heading {
+    color: #fff !important;
+    background-color: #0e3558 !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .panel-footer {
+    background-color: white !important;
+  }
+
+@media screen and (max-width: 900px) {
+.modal-dialog {
+    width: 800px;
+    margin: 30px auto;
+  }
+}
+h2 {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #303030;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+h4{
+  font: 400 18px Lato, sans-serif;
+  line-height: 1.8;
+  font-size: 12 px;
+  color: #818181;
+  text-align: justify;
+}
+@media screen and (min-width:1000px) {
+  .container-fluid{
+  width: 1300 px;
+  }
+}
+
