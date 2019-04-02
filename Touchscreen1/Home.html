@@ -48,6 +48,8 @@
   padding: 2px 16px;
    color: white;
    text-align: center;
+  
+  margin: auto;
 }
 
 
@@ -80,6 +82,7 @@
   padding:120px;
 }
 /* The Close Button */
+
 .close {
   position: relative;
   top: 15px;
@@ -87,7 +90,13 @@
   color: #444242a8;
   font-size: 40px;
   font-weight: bold;
-  transition: 0.3s;
+  transition: 0.3s; 
+  padding-bottom: 17px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  top: 2px;
+  left: 0px;
+
 }
 
 .close:hover,
@@ -95,6 +104,20 @@
   color: rgba(17, 14, 14, 0.795);
   text-decoration: none;
   cursor: pointer;
+}
+.btn-primary{
+  background-color:#0e3558;
+  border-color: #0e3558;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-right-width: 25px;
+  border-top-width: 9px;
+  border-left-width: 25px;
+  border-bottom-width: 7px;
+  font-size: 12px;
+  color: white ;
 }
 
 
@@ -121,7 +144,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a href="../Touchscreen1/Home.html"><img src="../Touchscreen1/Files/odu-icon.jpg" style="width:70px; height:50px;"></a>
+      <a href="../Touchscreen1/Home.html"><img src="../Touchscreen1/Files/odu-icon.jpg" style="height:50px;"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right" id="tabs">
@@ -135,38 +158,37 @@
 <script> 
 // Tab-Pane change function
 function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
+    var timer = duration;
     setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
+        /*minutes = parseInt(timer / 60, 10)*/
+        seconds = parseInt(duration);
         console.log("inside timer")
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+        /*minutes = minutes < 6 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;*/
         if (--timer < 0) {
             console.log("timer is 0")
             window.location.href='../Touchscreen1/EAC.html';
             timer = duration;
         }
-    }, 2000);
+    }, 1000);
 }
 
 window.onload=function myTimer() {
-    var CountSeconds= 60,
+    var CountSeconds= 35,
         display = document.querySelector("#time");
      console.log("calling timer")
     startTimer(CountSeconds, display);
 };
-  
 //Reset countdown timer
 
 function ResetTimer() {
   console.log("resetting timer")
-  setTimeout(myTimer, 20000)
+  setTimeout(myTimer, 80000)
 }  
 
 </script>
 <div class="container">
-    <h2>Partners</h2>
+    <h2 style="padding-top: 15px">Partners</h2>
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" onclick="ResetTimer()">
           <div class="box-part text-center" >
@@ -187,7 +209,7 @@ function ResetTimer() {
                                         <div class="modal-footer">
                                           <h4>Bonaventure comes from the Italian word buonaventura which literally means "good luck." When Dwight learned that his ancestor, Andrew Dunton, sailed to America in 1635 aboard the ship Bonaventure, he knew he was on to something great. 
                                           Bonaventure was more than just a ship of good tidings for the Dunton family, but would also good luck to his new real estate company.</h4>
-                                         <a class="btn btn-info" href="https://bonaventure.com/work-with-us/" target="_blank" role="button" style="background-color:rgb(83, 83, 77);text-align: center;">More</a></p>
+                                         <p><a class="btn btn-primary" href="https://bonaventure.com/work-with-us/" target="_blank" role="button" >More</a></p>
                                         </div>
                                       </div>
 
@@ -215,7 +237,7 @@ function ResetTimer() {
                           <div class="modal-footer">
                             <h4>From our earliest days, as the ­first company to offer real estate firms comprehensive, objective, reliable information, to our recent expansion into operating some of the most active Internet marketplaces for buying and selling commercial real estate, 
                               apartments, businesses and land, we’ve been committed to excellence and creating the most inventive and insightful company in our industry.</h4>
-                              <p><a class="btn btn-info" href="http://www.costargroup.com/careers/" target="_blank" role="button" style="background-color:rgb(83, 83, 77);text-align: center;">More</a></p>
+                              <p><a class="btn btn-primary" href="http://www.costargroup.com/careers/" target="_blank" role="button" >More</a></p>
                           </div>
                         </div>
 
@@ -244,7 +266,7 @@ function ResetTimer() {
                             </div>
                             <div class="modal-footer">
                               <h4>Electronic Systems, Inc. (ESI) delivers market-leading technology solutions, exceptional service and consulting expertise to businesses and organizations in Virginia, Metro DC, Maryland and North Carolina. Partners like Xerox, Hewlett Packard Enterprise, Cisco, HP Inc, Dell, Lenovo, and Microsoft to name just a few.</h4>
-                              <p><a class="btn btn-info" href="https://www.esi.net/about/careers/" target="_blank" role="button" style="background-color:rgb(83, 83, 77);text-align: center;">More</a></p>
+                              <p><a class="btn btn-primary" href="https://www.esi.net/about/careers/" target="_blank" role="button"   >More</a></p>
                               
                             </div>
                           </div>
@@ -273,7 +295,7 @@ function ResetTimer() {
                             <div class="modal-footer">
                               <h4>The company that is now PRA Group (Nasdaq: PRAA) began in 1996 as Portfolio Recovery Associates, headquartered in Norfolk, Virginia, with four employees. The company became PRA Group in 2014 with an expansion across Canada and Europe.
                                  Today, the company is a global leader employing more than 5,000 employees in the Americas and Europe.</h4>
-                                 <p><a class="btn btn-info" href="https://www.pragroup.com/careers/" target="_blank" role="button" style="background-color:rgb(83, 83, 77);text-align: center;">More</a></p>
+                                 <p><a class="btn btn-primary" href="https://www.pragroup.com/careers/" target="_blank" role="button"   >More</a></p>
                               
                             </div>
                           </div>
@@ -304,7 +326,7 @@ function ResetTimer() {
                                 <div class="modal-footer">
                                   <h4>Ranked No. 35 on the Fortune 500 list, State Farm is a mutual company that makes its primary focus its policyholders. 
                                     Our more than 65,000 employees and more than 18,000 independent contractor agents service 83 million policies and accounts throughout the U.S.</h4>
-                                     <p><a class="btn btn-info" href="https://www.statefarm.com/careers/" target="_blank" role="button" style="background-color:rgb(83, 83, 77);text-align: center;">More</a></p>
+                                     <p><a class="btn btn-primary" href="https://www.statefarm.com/careers/" target="_blank" role="button"   >More</a></p>
                                   
                                 </div>
                               </div>
@@ -332,7 +354,7 @@ function ResetTimer() {
                                 </div>
                                 <div class="modal-footer">
                                   <h4>NS' board of directors and executive management team lead one of the nation’s top transportation companies. NS invests in projects to expand the rail network, increase freight capacity, and improve efficiency for customers. These projects create jobs and reduce greenhouse gas emissions, making green shipping a reality. Norfolk Southern operates 19,500 route miles in 22 states and D.C., supports international trade with service to every major Eastern seaport, 10 river ports, and nine lake ports, and operates the most extensive intermodal network in the East.</h4>
-                                     <p><a class="btn btn-info" href="https://jobs.nscorp.com/ " target="_blank" role="button" style="background-color:rgb(83, 83, 77);text-align: center;">More</a></p>
+                                     <p><a class="btn btn-primary" href="https://jobs.nscorp.com/ " target="_blank" role="button"   >More</a></p>
                                   
                                 </div>
                               </div>
@@ -363,7 +385,7 @@ function ResetTimer() {
                               <div class="modal-footer">
                                 <h4>Valbridge Property Advisors is the largest independent commercial property valuation and advisory services firms in the U.S., with 200 MAI-designated appraisers, 74 office locations and more than 675 staff across the nation. 
                                   Valbridge provides independent appraisal services consistent with the highest industry standards of practice. Each Valbridge office is led by an appraiser who holds the MAI designation of the Appraisal Institute.</h4>
-                                   <p><a class="btn btn-info" href="https://www.valbridge.com/careers/" target="_blank" role="button" style="background-color:rgb(83, 83, 77);text-align: center;">More</a></p>
+                                   <p><a class="btn btn-primary" href="https://www.valbridge.com/careers/" target="_blank" role="button"   >More</a></p>
                                 
                               </div>
                             </div>
@@ -401,23 +423,22 @@ $(document).ready(function(){
     
 // Tab-Pane change function
 function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
+    var timer = duration;
     setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
+        
+        seconds = duration;
         console.log("inside timer")
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+       
         if (--timer < 0) {
             console.log("timer is 0")
             window.location.href='../Touchscreen1/EAC.html';
             timer = duration;
         }
-    }, 2000);
+    }, 1000);
 }
 
 function myTimer() {
-    var CountSeconds= 60,
+    var CountSeconds= 35,
     display = document.querySelector("#time");
     console.log("calling timer")
     startTimer(CountSeconds, display);
@@ -427,7 +448,7 @@ function myTimer() {
 
 function ResetTimer() {
   console.log("resetting timer")
-  setTimeout(myTimer, 20000)
+  setTimeout(myTimer, 80000)
 }  
 
 </script>
