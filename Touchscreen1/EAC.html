@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SAC content Display</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../Touchscreen1/css/partners.css">
+  
+ 
+</head>
+<style>
+.btn-primary{
+  background-color:#0e3558;
+  border-color: #0e3558;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-right-width: 25px;
+  border-top-width: 9px;
+  border-left-width: 25px;
+  border-bottom-width: 7px;
+  font-size: 12px;
+  color: white ;
+}
+
+img{
+    width:700;
+    height:300 ;
+  }
+p{
+  text-align: justify;
+  width: 100%;
+  max-width: 370px;
+}
+
+
+.img-responsive {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+}
+</style>
+<body data-target=".navbar" data-offset="60">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a href="../Touchscreen1/Home.html"><img src="../Touchscreen1/Files/odu-icon.jpg" style="height:50px;"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="../Touchscreen1/Home.html">Partners</a></li> 
+        <li><a href="../Touchscreen1/EAC.html">EAC </a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Container (EAC Section) -->
+<div class="container" id="#time" onload="myTimer()">
+<script>
+    
+window.onload=function myTimer() {
+    var CountSeconds= 35,
+    display = document.querySelector("#time");
+    console.log("calling timer after loading..")
+    startTimer(CountSeconds, display);
+};
+     
+</script>
+<div class="container-fluid" onclick="ResetTimer()">
+    <div class="text-center">
+         <h2>EAC</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 col-md-6 col-lg-4" >
+            <img src="../Touchscreen1/Files/EAC%20highlights/Hamilton perkins.jpg" class="img-responsive img-thumbnail" alt="Hamilton Perkins" />
+      </div> 
+      <div class="col-sm-9 col-md-6 col-lg-8">
+            <h1>Hamilton Perkins</h1>
+            <p style="text-align: justify">Hamilton Perkins is and ODU Alum and the founder and President of Hamilton Perkins Collection. Humans have produced 9 billion tons of plastic. His solution is the Hamilton Perkins Collection, a premium line of uniquely-designed, eco-friendly travel bags made from recycled bottles and billboards.</p>
+            <a href="https://hamiltonperkins.com/" class="btn btn-primary"  target="_blank"  role="button">Know more </a>
+      </div>
+    </div>
+  </div>
+<div class="container-fluid" onclick="ResetTimer()">
+    <div class="row">
+        <div class="col-sm-3 col-md-6 col-lg-4">
+              <img src="../Touchscreen1/Files/EAC highlights/Scott Adams.jpg" class="img-responsive img-thumbnail"  alt="Scott Adams" />   
+        </div> 
+        <div class="col-sm-9 col-md-6 col-lg-8" >       
+              <h1>Scott Adams</h1>
+              <p>Scott Adams is the Regional President of the Mid-South Affiliate Offices for CBRE.During his career, Scott has led the marketing, negotiations, and sale closing of over $1.4 billion of investment property sales. Scott’s particular areas of focus and expertise as a sales broker are office, flex, and industrial assets</p>
+              <p><a href="https://www.cbre.us/" class="btn btn-primary"  target="_blank" role="button">Know more </a></p>
+        </div>
+    </div>
+  </div>
+<div class="container-fluid" onclick="ResetTimer()">
+    <div class="row">
+          <div class="col-sm-3 col-md-6 col-lg-4">
+                <img src="../Touchscreen1/Files/EAC highlights/Teresa Peters.jpg" class="img-responsive img-thumbnail"  alt="Teresa Peters" /> 
+          </div> 
+          <div class="col-sm-9 col-md-6 col-lg-8" >
+                <h1>Teresa Peters</h1>
+                <p>Teresa Peters President and Partner of Stanton Partners, Inc.She has over 40 years of experience in commercial real estate and has been with the company since its inception in 1993.  Teresa is responsible for all operational aspects of the company including the asset management of approximately 1 million square feet of retail and mixed-used properties throughout southeastern Virginia.</p>
+                <p><a href="https://www.stantonpartners.com/" class="btn btn-primary"    target="_blank" role="button">Know more </a></p>
+          </div>
+    </div>
+  </div>
+</div>
+<script>
+    
+// Tab-Pane change function
+function startTimer(duration, display) {
+    var timer = duration;
+    setInterval(function () {
+        seconds = duration;
+        console.log("inside resetter timer")
+        
+        if (--timer < 0) {
+            console.log("reset timer is 0")
+            window.location.href='../Touchscreen1/Home.html';
+            timer = duration;
+        }
+    }, 1000);
+}
+
+function myTimer() {
+    var CountSeconds= 35,
+    display = document.querySelector("#time");
+    console.log("calling reset timer")
+    startTimer(CountSeconds, display);
+};
+  
+//Reset countdown timer
+
+function ResetTimer() {
+  console.log("calling timer after resetting...")
+  setTimeout(myTimer, 80000)
+}    
+</script>
+</body>
+</html>
