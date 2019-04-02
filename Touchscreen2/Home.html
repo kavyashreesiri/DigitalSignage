@@ -21,6 +21,11 @@ background-color:#f6f9fa;
 color:#0e3558;
 
 }
+.btn-info {
+  color: #fff;
+  background-color: #0e3558;
+  position: center;
+}
 .myBtn,.myBtn2,.myBtn3{
   border: 0;
   text-align: center; 
@@ -36,18 +41,7 @@ color:#0e3558;
     margin-left: auto;
 }
 
-.overlay {
-  position:absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  background-color:#f6f9fa;
-  overflow: hidden;
-  width: 310px;
-  height:0;
-  transition: .5s ease;
-  top: 0px;
-}
+
 #a1{
   bottom: 0;
   min-height:270px;
@@ -66,21 +60,10 @@ color:#0e3558;
   margin:15px 0px;
 }
 
-.text {
-  color: #0e3558;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
 
 .btn-primary{
-  background-color:#e8e5e5;
-  border-color: #e8e5e5;
+  background-color:#0e3558;
+  border-color: #0e3558;
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -90,12 +73,9 @@ color:#0e3558;
   border-left-width: 25px;
   border-bottom-width: 7px;
   font-size: 12px;
-  color: #818181;
+  color: white ;
 }
-.btn-primary:hover {
-  background-color:#0e3558;
-  border-color: #0e3558;
-}
+
 .inner{
     position:relative;
     top:0px;
@@ -126,6 +106,15 @@ color:#0e3558;
 ::-webkit-scrollbar-thumb:hover {
   background:   rgb(214, 213, 213); 
 }
+
+.box-part:hover button{
+    opacity: .5;
+}
+#myBtn,#myBtn3,#myBtn2 img {
+  -webkit-filter: drop-shadow(5px 5px 5px rgb(110, 108, 108) );
+  filter: drop-shadow(5px 5px 5pxrgb(110, 108, 108));
+}
+
 </style>
 
 <body data-target=".navbar" data-offset="60">
@@ -138,7 +127,7 @@ color:#0e3558;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <p><a href="../Touchscreen2/Home.html" role="button">img src="../Touchscreen1/Files/odu-icon.jpg" style="height:50px;"></a></p>
+          <p><a href="../Touchscreen2/Home.html" role="button"><img src="/Touchscreen1/Files/odu-icon.jpg" style="height:50px;"></a></p>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
@@ -153,194 +142,19 @@ color:#0e3558;
     <div class="container">
             <h2></h2>
             <div class="row">
-              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"  onclick="window.open('../Touchscreen2/directory.html','_self');">
                   <div class="box-part text-center">
-                      <button id="myBtn"  class="btn btn-link" style="border: 0;text-align: center;  max-width:310px; max-height:350px;padding: 0 0px;">
-                        <img src="../Touchscreen2/directory.jpg" alt="Directory" style="max-width:310px; height:350px;">
-                        <div class="overlay">
-                        <div class="text"><a href="../Touchscreen2/directory.html" target="_blank">Directory</a></div>
+                      <button id="myBtn" style="border: 0;text-align: center;  width:310px; max-height:350px;padding: 0 0px;">
+                        <img src="../Touchscreen2/Home_files/directory.png" alt="Directory" style="width:310px; height:350px; " >
                         
-                        </div>  
                       </button>
-                                           <!-- The Modal --> <!-- 
-                            <div  id="myModal" class="modal" role="dialog">
-                                              <!-- Modal content --><!-- 
-                                    <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                <div>
-                                                <h2 style="padding-bottom: 15px;">
-                                                Departments    
-                                                </h2>
-                
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-6 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/business.html">Business Analytics</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-6 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/cee.html">Center for Economic Education</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/de.html">Department of Economics</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/fd.html">Finance Department</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/dm.html">Department of Management</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/md.html">Marketing Department</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/dceap.html">Dragas Center for Economic Analysis and Policy</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/cre.html">E.V. Williams Center for Real Estate</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/efp.html">Economic Forecasting Project</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/itds.html">Information Technology and Decision Sciences</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/ifsc.html">Insurance and Financial Services Center</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/dib.html">Department of International Business</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/mba.html">Master of Business Administration</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/accounting.html">Accounting</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/sps.html">School of Public Service</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                <div class="list_info listpages list parbase section">
-                                                <section class="section profiles page clearfix first">    
-                                                <div class="grid-3 omega" style="min-height:10px;">
-                                                    <h3 style="display:inline"><a href="../Touchscreen2/uacds.html">Undergraduate Advising and Career Development Services</a></h3>
-                                                </div>
-
-                                                </section>
-                                                <hr class="rule">
-                                                </div>
-                                                </div>
-                                                </div>
-                                                    
-                                                </div>
-                                                <div class="modal-footer"> 
-                                                 <p><a class="btn btn-info" href="https://bonaventure.com/work-with-us/" target="_blank" role="button" style="background-color:rgb(83, 83, 77);text-align: center;">More</a></p>
-                                                </div>
-                                              </div>
-        
-                                            </div>-->
                   </div>
               </div>  
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                  <div class="box-part text-center"> 
                     <button  id="myBtn2"  style="border: 0;text-align: center;  max-width:310px; max-height:350px;padding: 0 0px;">
-                    <img src="../Touchscreen2/event1.png" alt="Events" style="height:350px; max-width:310px;">  
-                    <div class="overlay">
-                      <div class="text">Events</div>
-                     </div> 
+                    <img src="../Touchscreen2/Home_files/events.png" alt="Events" style="height:350px; max-width:310px;">  
+                    
                     </button>
                         <!-- The Modal -->
                             <div id="myModal2" class="modal" role="dialog">
@@ -391,7 +205,7 @@ color:#0e3558;
                                                   </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <p><a class="btn btn-info" href="https://odu.edu/business/calendar/" target="_blank" role="button" style="background-color:rgb(83, 83, 77);text-align: center;">More</a></p>
+                                        <p><a class="btn btn-primary" href="https://odu.edu/business/calendar/" target="_blank" role="button" style="text-align: center;">More</a></p>
                                     </div>
                                 </div>
             
@@ -401,11 +215,8 @@ color:#0e3558;
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="box-part text-center" > 
                        <button  id="myBtn3"  style="border: 0;text-align: center;  max-width:310px; max-height:350px;padding: 0 0px;">
-                        <img  src="../Touchscreen2/Floor map.png" alt="Map" style="width:310px; height:350px">
+                        <img  src="../Touchscreen2/Home_files/map.png" alt="Map" style="width:310px; height:350px">
                       
-                       <div class="overlay">
-                          <div class="text">Floor Map</div>
-                      </div> 
                     </button>
                        <!-- The Modal -->
                                  <div id="myModal3" class="modal" role="dialog">
@@ -418,11 +229,11 @@ color:#0e3558;
                                      </div>
                                      <div class="modal-body">
                                        <div class="container-fluid text-align: center">
-                                         <img src="../Touchscreen2/Floor map.png" alt="Map" style="width: 100%; ">
+                                         <img src="../Touchscreen2/fourth-floor-perry-library.jpg" alt="Map" style="width: 100%; ">
                                         </div>
                                      </div>
                                      <div class="modal-footer">
-                                         <p style="text-align: center;"><a class="btn btn-info" href="" target="_blank" role="button" style="background-color:rgb(83, 83, 77);">More</a>
+                                         <p style="text-align: center;"><a class="btn btn-primary" href="" target="_blank" role="button">More</a>
                                         </p>
                                      </div>
                                    </div>
@@ -433,7 +244,7 @@ color:#0e3558;
             </div>
     </div>
     <div class="container" >
-        <h2 style="padding-left:15px; padding-bottom: 10px;">Announcements</h2>
+        <h2 style="padding-left:10px; padding-bottom: 10px;color:#0e3558 ;font-size: 25px">Announcements</h2>
             <div class="row outer scroll-bar-wrap">
                 
                  <div class="inner scroll-box">
@@ -549,6 +360,7 @@ $('.outer').css({maxHeight: $('.inner').height()});
 // duplicate content of inner:
 $('.inner').html($('.inner').html() + $('.inner').html());
 autoScrollUp();
+
 /*function to pause on mouseover*/
 $(document).ready(function() {
   var timePassed;
@@ -572,6 +384,30 @@ $(document).ready(function() {
         }
     });
 });
+(function() {
+
+const idleDurationSecs = 240;    // Number of seconds
+const redirectUrl = location.href;  // Redirect idle users to this URL
+let idleTimeout; // variable to hold the timeout, do not modify
+
+const resetIdleTimeout = function() {
+
+    // Clears the existing timeout
+    if(idleTimeout) clearTimeout(idleTimeout);
+
+    // Set a new idle timeout to load the redirectUrl after idleDurationSecs
+    idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
+};
+
+// Init on page load
+resetIdleTimeout();
+
+// Reset the idle timeout on any of the events listed below
+['click', 'touchstart', 'mousemove'].forEach(evt => 
+    document.addEventListener(evt, resetIdleTimeout, false)
+);
+
+})();
 </script>
 </body>
 </html>

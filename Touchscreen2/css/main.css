@@ -3,11 +3,15 @@
     background-color: #0e3558;
     z-index: 9999;
     border: 0;
+   
     font-size: 12px !important;
     line-height: 1.42857143 !important;
     letter-spacing: 4px;
     border-radius: 0;
     font-family: Montserrat, sans-serif;
+}
+.navbar .container{
+     flex-wrap:nowrap;
 }
 .navbar li a, .navbar .navbar-brand {
     color: white !important;
@@ -20,21 +24,23 @@
     border-color: transparent;
     color: white !important;
 }
-.logo {
+.img {
     color: #0e3558;
     font-size: 200px;
+}
+.logo-small {
+    color: #0e3558;
+    font-size: 50px;
 }
 .container-fluid {
     padding: 5px 25px;
     min-height: 900px;
     max-height: 1500px;
+    flex-wrap: wrap;
 }
 
-.logo-small {
-    color: #0e3558;
-    font-size: 50px;
-}
-@media screen and (orientation: portarit){
+
+@media screen and (orientation: portrait){
   .container-fluid{
       width: 100%;
   }
@@ -75,6 +81,7 @@ body {
     line-height: 1.8;
     color: #818181;
 }
+
 /* Modal Content */
 .modal-content {
   position: relative;
@@ -94,9 +101,10 @@ body {
   color: white;
 }
 .modal-footer {
-  padding: 2px 16px;
-   color: white;
-   text-align: center;
+  
+  color: white;
+  text-align: center;
+  margin: auto;
 }
 /* Modal Content */
 .modal {
@@ -135,7 +143,13 @@ body {
   color: #444242a8;
   font-size: 40px;
   font-weight: bold;
-  transition: 0.3s;
+  transition: 0.3s; 
+  padding-bottom: 17px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  top: 2px;
+  left: 0px;
+
 }
 .close:hover,
 .close:focus {
@@ -178,5 +192,3 @@ body {
     max-height: 1400px; 
 }
 
-/*Scroll bar style*/
-/* width */
