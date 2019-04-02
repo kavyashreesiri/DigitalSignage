@@ -12,30 +12,37 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
   <link rel="stylesheet" href="../Touchscreen2/css/main.css">
-<script type="text/javascript" src="../Touchscreen2/css/clientlibs.min.css"></script>
-<link rel="stylesheet" href="https://odu.edu/etc/designs/odu/clientlibs.min.css">
+  <link rel="stylesheet" href="https://odu.edu/etc/designs/odu/clientlibs.min.css">
 
 </head>
 <style>
-.btn {
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-   
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    border-radius: 4px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.btn-primary{
+    padding-bottom: 0px;
+    padding-top: 0px;
+    border-top-width: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-bottom-width: 0px;
+    color:white;
+    background-color: white;
+    border-color: white;
+    max-width:150px;
+    max-height: 45px;
+}
+
+.omega{
+  margin-right: 1px !important;
+  margin-left: 14px;
+  padding-top: 15px;
+}
+
+.container-fluid {
+    padding: 5px 25px;
+    min-height: 710px;
+    max-height: 1500px;
+    flex-wrap: wrap;
 }
 </style>
 <body data-target=".navbar" data-offset="60">
@@ -67,33 +74,38 @@
                 <h2>Departments</h2>
                 </div>
                 <div class="grid-3 omega">
-                    <button  id="myBtn2"  style="text-align: center; padding: 0 0px;"> View Map</button>
+                          <button  id="myBtn2" class="btn btn-primary"> 
+                            <img src="../Touchscreen2/Home_files/mapbtn.png" style="max-width:150px;    max-height: 45px;">
+                          </button>
                 </div>
                 </div>
+                </div>
+                
                <div id="myModal3" class="modal" role="dialog">
                                    <!-- Modal content -->
                                    <div class="modal-content">
                                      <div class="modal-header">
                                        <button  type="button" class="close" data-dismiss="modal" >
                                        <span aria-hidden="true">&times;</span>
-                                     </button>
+                                     </button>>
                                      </div>
                                      <div class="modal-body">
                                        <div class="container-fluid text-align: center">
-                                         <img src="../Touchscreen2/Floor map.png" alt="Map" style="width: 100%; ">
+                                         <img src="../Touchscreen2/fourth-floor-perry-library.jpg" alt="Map" style="width: 100%; ">
                                         </div>
                                      </div>
                                      <div class="modal-footer">
-                                         <p style="text-align: center; position: relative"><a class="btn btn-info" href="" role="button" style="background-color: #0e3558;"  onclick="goBack()">Go Back</a>
+                                         <p style="text-align: center; position: relative">
+                                          <a class="btn btn-info" href="" role="button" style="background-color: #0e3558;text-decoration-color: white"  onclick="goBack()">Go Back</a>
                                         </p>
                                      </div>
                                    </div>
            
-                                 </div>
+                </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/dean_office.html" target="_blank">Dean's Office</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/dean_office.html"   >Dean's Office</a></h3>
                 </div>
                     
                 </section>
@@ -102,8 +114,8 @@
                 
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/business.html" target="_blank">Business Analytics</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/business.html"   >Business Analytics</a></h3>
                 </div>
                     
                 </section>
@@ -112,8 +124,8 @@
                 
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/cee.html">Center for Economic Education</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/cee.html"    >Center for Economic Education</a></h3>
                 </div>
                     
                 </section>
@@ -121,8 +133,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/de.html" target="_blank">Department of Economics</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/de.html"   >Department of Economics</a></h3>
                 </div>
                     
                 </section>
@@ -131,8 +143,8 @@
                     
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/fd.html" target="_blank">Finance Department</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/fd.html"   >Finance Department</a></h3>
                 </div>
                     
                 </section>
@@ -140,8 +152,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/dm.html" target="_blank">Department of Management</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/dm.html"   >Department of Management</a></h3>
                 </div>
                     
                 </section>
@@ -149,8 +161,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/md.html" target="_blank">Marketing Department</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/md.html"   >Marketing Department</a></h3>
                 </div>
                     
                 </section>
@@ -158,8 +170,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/dceap.html" target="_blank">Dragas Center for Economic Analysis and Policy</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/dceap.html"   >Dragas Center for Economic Analysis and Policy</a></h3>
                 </div>
                     
                 </section>
@@ -167,8 +179,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/cre.html" target="_blank">E.V. Williams Center for Real Estate</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/cre.html"   >E.V. Williams Center for Real Estate</a></h3>
                 </div>
                     
                 </section>
@@ -176,8 +188,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/efp.html" target="_blank">Economic Forecasting Project</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="https://www.ceapodu.com/the-staff/"   >Economic Forecasting Project</a></h3>
                 </div>
                     
                 </section>
@@ -185,8 +197,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/itds.html" target="_blank">Information Technology and Decision Sciences</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/itds.html"   >Information Technology and Decision Sciences</a></h3>
                 </div>
                     
                 </section>
@@ -194,8 +206,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/dept/ifsc.html" target="_blank">Insurance and Financial Services Center</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/ifsc.html"   >Insurance and Financial Services Center</a></h3>
                 </div>
                     
                 </section>
@@ -203,8 +215,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/dib.html" target="_blank">Department of International Business</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/dib.html"   >Department of International Business</a></h3>
                 </div>
                     
                 </section>
@@ -212,8 +224,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/mba.html" target="_blank">Master of Business Administration</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/mba.html"   >Master of Business Administration</a></h3>
                 </div>
                     
                 </section>
@@ -221,8 +233,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/accounting.html" target="_blank">Accounting</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/accounting.html"   >Accounting</a></h3>
                 </div>
                     
                 </section>
@@ -230,8 +242,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/sps.html" target="_blank">School of Public Service</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/sps.html"   >School of Public Service</a></h3>
                 </div>
                     
                 </section>
@@ -239,8 +251,8 @@
                 </div>
                 <div class="list_info listpages list parbase section">
                 <section class="section profiles page clearfix first">    
-                <div class="grid-6 omega" style="min-height:10px;">
-                    <h3 style="display:inline"><a href="../Touchscreen2/dept/uacds.html" target="_blank">Undergraduate Advising and Career Development Services</a></h3>
+                <div class="grid-12 omega" style="min-height:10px;">
+                    <h3 style="display:inline"><a href="../Touchscreen2/dept/uacds.html"   >Undergraduate Advising and Career Development Services</a></h3>
                 </div>
                     
                 </section>
@@ -259,6 +271,30 @@ $(document).ready(function(){
 function goBack() {
   window.history.back();
 }
+(function() {
+
+const idleDurationSecs = 500;    // Number of seconds
+const redirectUrl = '/Touchscreen2/Home.html';  // Redirect idle users to this URL
+let idleTimeout; // variable to hold the timeout, do not modify
+
+const resetIdleTimeout = function() {
+
+    // Clears the existing timeout
+    if(idleTimeout) clearTimeout(idleTimeout);
+
+    // Set a new idle timeout to load the redirectUrl after idleDurationSecs
+    idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
+};
+
+// Init on page load
+resetIdleTimeout();
+
+// Reset the idle timeout on any of the events listed below
+['click', 'touchstart', 'mousemove'].forEach(evt => 
+    document.addEventListener(evt, resetIdleTimeout, false)
+);
+
+})();
 </script>
 </body>
-</html>
+</html> 
