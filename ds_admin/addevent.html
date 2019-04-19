@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../ds_admin/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+   
+      
+<script type="text/javascript" language="javascript" >
+  $(document).ready(function() {
+     var table = $('#current-event-grid').DataTable( {
+       "processing": true,
+       "serverSide": true,
+       "ajax":{
+         url: "../ds_admin/php_action/getallevents.php",
+         type:"post",
+         error:function(){
+           $(".current-event-grid-error").html("");
+           $("#current-event-grid").append('<tbody class="current-event-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+           $("#current-event-grid_processing").css("display","none");
+         }
+       },
+       "columnDefs": [
+        {"orderable": false, "targets": 7},
+        {"orderable": false, "targets": 3},
+        {"orderable": false, "targets": 6}
+        ],
+        "columnDefs": [ {
+            "targets": -1,
+            "data": null,
+            "render": function ( data, type, row, meta ) {
+             return '<button id="eedit" class="btn btn-primary" value="Edit"  href="'+data[0]+'"/>Edit</button>'+'&nbsp'+'<button   class="btn btn-primary"  id="edelete"  value="'+data[0]+'" onclick="RemoveEvent(this.value);">Delete</button>';
+            }
+        } ],
+        "pageLength": 5
+});
+
+} );
+
+</script>
+      
+</head>
+<style>
+
+#datepicker{width:180px; margin: 0 20px 10px 20px;}
+#datepicker > span:hover{cursor: pointer;}
+#current-event-grid_wrapper{
+    margin-top: 80px;
+}    
+.input-field{
+  width:180px; 
+  margin: 0 20px 10px 20px;
+}
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 60%;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+.modal-header {
+  padding: 2px 16px;
+  background-color: white;
+  color: white;
+}
+.modal-footer {
+  padding: 2px 16px;
+   color: white;
+   text-align: center;
+  
+  margin: auto;
+}
+
+
+/* Modal Content */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  padding-left: 20 px;
+  padding-right: 50px;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(117, 115, 115, 0.9); /* Black w/ opacity */
+ 
+}
+.modal-backdrop {
+    /* position: fixed; */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    background-color: #000;
+}
+.modal-open .modal{
+  overflow-x: hidden;
+  overflow-y:hidden;
+}
+
+/* The Close Button */
+
+.close {
+  position: relative;
+  top: 15px;
+  right: 35px;
+  color: #444242a8;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s; 
+  padding-bottom: 17px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  top: 2px;
+  left: 0px;
+
+}
+
+.close:hover,
+.close:focus {
+  color: rgba(17, 14, 14, 0.795);
+  text-decoration: none;
+  cursor: pointer;
+}
+#myBtn2,#myBtn3{
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-left-width: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  margin-top: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  background-color:#0e3558;
+  border-color: #0e3558;
+}
+table.dataTable tr.odd td.sorting_1 {
+    background-color: #0e3558;
+}
+.btn-primary,{
+  background-color:#0e3558;
+  border-color: #0e3558;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-right-width: 25px;
+  border-top-width: 9px;
+  border-left-width: 25px;
+  border-bottom-width: 7px;
+  font-size: 12px;
+  color: white ;
+}
+.btn-primary :hover{
+  color: #fff;
+  background-color: transparent;
+  border-color: #0e3558;
+}
+.input-group{
+  margin-bottom: 5px;
+}
+</style>
+<body data-target=".navbar" data-offset="60">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a href="../Touchscreen1/Home.html"><img src="../Touchscreen1/Files/odu-icon.jpg" style="height:50px;"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right" id="tabs">
+            <li>
+              <button  id="myBtn2" class="btn btn-primary"> 
+              Add Events </button>
+            </li>
+           
+            
+            <li><a href="../Touchscreen1/add_announcement.html"> Add Announcements</a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div><span><h4 style="color:#0e3558;"> Event table </h4> </span></div>
+    <table id="current-event-grid"  cellpadding="0" cellspacing="2" border="1.5px"  class="display" width="95%">
+                <thead>
+                    <tr>
+                        <th>Event ID</th>
+                        <th>Event Title</th>
+                        <th>Event Date</th>
+                        <th>Event Image</th>
+                        <th>Event Start Time</th>
+                        <th>Event End Time</th>
+                        <th style="width: 150px;">Event Link</th>
+                        <th>Modify</th>
+                    </tr>
+                </thead>
+        </table>
+        <div id="myModal3" class="modal fade" role="dialog">
+            <!-- Modal content -->
+            <div class="modal-content" style="margin-top: 60px;">
+              <div class="modal-header">
+                <button  type="button" class="close" data-dismiss="modal" >
+                <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                    <form style="max-width:500px;margin:auto"  name="addeventform" autocomplete="on" method="post">
+                      <h3 style="text-align: center">Add New Event</h3>
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+                          <input   type="text" placeholder="Event Title" class="form-control" id="E_Title" name="E_Title" required>
+                        </div>
+                      
+                      <div class="input-container" >
+                      <div class='input-group date'   id='datetimepicker2' onclick="datepicker();">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                          <input  type='text' placeholder="Event Date- YYYY-MM-DD"  id="E_Date" name="E_Date" class="form-control" required/>
+                          
+                      </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        <input   type='text' placeholder="Event Start time- HH-MM"  id="E_Starttime" class="form-control" name="E_Starttime">
+                      </div>
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                          <input type='text' placeholder="Event End time- HH-MM"  id="E_Endtime"  class="form-control" name="E_Endtime" >
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                            <input type="file" accept="image/*" placeholder="Add Event image"  id="E_img" class="form-control" name="E_img" >
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
+                            <input type="url" placeholder="Event website" class="form-control"  id="e_url" name="e_url">
+                        </div>                 
+                      
+                      <div class="input-group">
+                      <button type="submit" class="btn btn-primary" style="text-align: center;margin-left: 200px;margin-right: 200px;"  id="submitform" class="form-control">Add Event</button>
+                      </div>
+                    </form>
+                 
+
+                </div>
+                  
+              </div>
+              
+              <div class="modal-footer">
+                  <!--<p style="text-align: center; position: relative">
+                   <a class="btn btn-info" href="" role="button" style="background-color: #0e3558;text-decoration-color: white"  onclick="AddEvent()"></a>
+                 </p>-->
+              </div>
+            </div>
+
+        </div>
+
+<script>
+$(document).ready(function(){
+  $("#myBtn2").click(function(){
+    $("#myModal3").modal({show: true});
+  });
+});  
+$('#submitform').on('click',function AddEvent() {
+  var formdata = new Array(document.getElementById("E_Title").value, document.getElementById("E_Date").value, document.getElementById("E_Starttime").value, document.getElementById("E_Endtime").value,document.getElementById("E_img").value,document.getElementById("e_url").value);
+  var jsondata= JSON.stringify(formdata);
+   console.log(jsondata);
+       $.ajax({
+         type:"POST",
+         url: "../ds_admin/php_action/addevent.php",
+         data:{newdata:jsondata},
+         dataType:"JSON",
+         success:function(data,status,jqXHR) {
+           console.log(data); 
+           var table = $('#current-event-grid').DataTable();
+           table.ajax.reload(null,false);
+         },
+         error:function(data,status,jqXHR){
+          console.log(data);
+          var table = $('#current-event-grid').DataTable();
+          table.ajax.reload(null,false);$("#addeventform").append("<p>added successfully</p>");
+          alert("error");
+          
+         }
+       }   
+       
+      );
+      window.location = '/';
+});
+
+
+function RemoveEvent(val){
+  var eid=val;
+
+  var jsondata=JSON.stringify(eid);
+ 
+  console.log(jsondata);
+  alert(jsondata);
+  $.ajax({
+         type:"POST",
+         url: "../ds_admin/php_action/deleteevent.php",
+         data: {newdata:jsondata},
+         dataType:"JSON",
+         success:function(response) {
+             console.log(response); 
+             var table = $('#current-event-grid').DataTable();
+             table.ajax.reload(null,false);
+         },
+         error:function(data,status,jqXHR){
+          console.log(data);
+          var table = $('#current-event-grid').DataTable();
+          table.ajax.reload(null,false);
+         }
+       } );
+     
+}
+ 
+function datepicker() {
+  $('#datetimepicker2').datetimepicker({
+	  viewMode: 'months',
+	  format: 'YYYY-MM-DD'
+  });
+}
+function timepicker(){
+  $('#starttimepicker').datetimepicker({
+    viewMode:'hours',
+    format:'h:mm:ss a'
+  });
+  $('#endtimepicker').datetimepicker({
+    viewMode:'hours',
+    format:'h:mm:ss a'
+  });
+}
+
+</script>
+</body>
+</html>
