@@ -19,7 +19,8 @@
    
       
 <script type="text/javascript" language="javascript" >
-  $(document).ready(function() {
+
+$(document).ready(function() {
      var table = $('#current-event-grid').DataTable( {
        "processing": true,
        "serverSide": true,
@@ -27,7 +28,7 @@
          url: "../ds_admin/php_action/getallevents.php",
          type:"post",
          error:function(){
-           $(".current-event-grid-error").html("");
+           console.log("Could not load table!")
            $("#current-event-grid").append('<tbody class="current-event-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
            $("#current-event-grid_processing").css("display","none");
          }
@@ -35,19 +36,59 @@
        "columnDefs": [
         {"orderable": false, "targets": 7},
         {"orderable": false, "targets": 3},
-        {"orderable": false, "targets": 6}
-        ],
+        {"orderable": false, "targets": 6} ],
         "columnDefs": [ {
             "targets": -1,
             "data": null,
             "render": function ( data, type, row, meta ) {
-             return '<button id="eedit" class="btn btn-primary" value="Edit"  href="'+data[0]+'"/>Edit</button>'+'&nbsp'+'<button   class="btn btn-primary"  id="edelete"  value="'+data[0]+'" onclick="RemoveEvent(this.value);">Delete</button>';
+             return '<button class="btn btn-primary" id="myBtn3"  onclick="UpdateEvent(this.value);">Edit</button>'+'&nbsp'+'<button id="delete" class="btn btn-primary"  value="'+data[0]+'" onclick="RemoveEvent(this.value);">Delete</button>';
             }
-        } ],
-        "pageLength": 5
+        }],
+    
+        
+        "pageLength": 15
 });
 
-} );
+$('#myBtn3').on('click',function(){
+    
+    $('#myModal4').modal("show");
+
+});
+
+$('#submitform').on('click',function AddEvent() {
+  var formdata = new Array(document.getElementById("E_Title").value, document.getElementById("E_Date").value, document.getElementById("E_Starttime").value, document.getElementById("E_Endtime").value,document.getElementById("e_url").value);
+  var jsondata= JSON.stringify(formdata);
+  event.preventDefault();
+   console.log(jsondata);
+       $.ajax({
+         type:"POST",
+         url: "../ds_admin/php_action/addevent.php",
+         data:{newdata:jsondata},
+         dataType:"JSON",
+         success:function(response) {
+           console.log(data); 
+           
+           alert("Event Added");
+
+           var table = $('#current-event-grid').DataTable();
+           table.ajax.reload(null,false);
+         },
+         error:function(response){
+          console.log(data);
+          var table = $('#current-event-grid').DataTable();
+          table.ajax.reload(null,false);
+          //alert("error");
+          
+         }
+       }   
+       
+      );
+      header('Location:#');
+});
+
+});
+ 
+
 
 </script>
       
@@ -57,8 +98,10 @@
 #datepicker{width:180px; margin: 0 20px 10px 20px;}
 #datepicker > span:hover{cursor: pointer;}
 #current-event-grid_wrapper{
-    margin-top: 80px;
+    /* margin-top: 100px; */
+    padding-top: 10px;
 }    
+
 .input-field{
   width:180px; 
   margin: 0 20px 10px 20px;
@@ -88,7 +131,11 @@
   
   margin: auto;
 }
-
+#heading{
+  margin-top:55px;
+  padding-left: 10px;
+  font-family:  Montserrat, sans-serif;
+}
 
 /* Modal Content */
 .modal {
@@ -145,7 +192,7 @@
   text-decoration: none;
   cursor: pointer;
 }
-#myBtn2,#myBtn3{
+#myBtn2{
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -161,10 +208,8 @@
   background-color:#0e3558;
   border-color: #0e3558;
 }
-table.dataTable tr.odd td.sorting_1 {
-    background-color: #0e3558;
-}
-.btn-primary,{
+
+.btn-primary{
   background-color:#0e3558;
   border-color: #0e3558;
   padding-top: 0px;
@@ -182,6 +227,12 @@ table.dataTable tr.odd td.sorting_1 {
   color: #fff;
   background-color: transparent;
   border-color: #0e3558;
+}
+table >tr :hover {
+  border-top: 1px solid #ddd;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: rgb(180, 125, 125);
 }
 .input-group{
   margin-bottom: 5px;
@@ -213,7 +264,7 @@ table.dataTable tr.odd td.sorting_1 {
         </div>
       </div>
     </nav>
-    <div><span><h4 style="color:#0e3558;"> Event table </h4> </span></div>
+    <div id="heading"><h3 style="color:#0e3558;margin-top:55px;"> Event table </h3></div>
     <table id="current-event-grid"  cellpadding="0" cellspacing="2" border="1.5px"  class="display" width="95%">
                 <thead>
                     <tr>
@@ -228,7 +279,7 @@ table.dataTable tr.odd td.sorting_1 {
                     </tr>
                 </thead>
         </table>
-        <div id="myModal3" class="modal fade" role="dialog">
+        <div id="myModal3" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
             <!-- Modal content -->
             <div class="modal-content" style="margin-top: 60px;">
               <div class="modal-header">
@@ -238,7 +289,7 @@ table.dataTable tr.odd td.sorting_1 {
               </div>
               <div class="modal-body">
                 <div class="container-fluid">
-                    <form style="max-width:500px;margin:auto"  name="addeventform" autocomplete="on" method="post">
+                    <form style="max-width:500px;margin:auto" id="data" name="addeventform" autocomplete="on"  enctype="multipart/form-data" method="post">
                       <h3 style="text-align: center">Add New Event</h3>
                       <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
@@ -260,10 +311,8 @@ table.dataTable tr.odd td.sorting_1 {
                           <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                           <input type='text' placeholder="Event End time- HH-MM"  id="E_Endtime"  class="form-control" name="E_Endtime" >
                         </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-                            <input type="file" accept="image/*" placeholder="Add Event image"  id="E_img" class="form-control" name="E_img" >
-                        </div>
+                       
+
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
                             <input type="url" placeholder="Event website" class="form-control"  id="e_url" name="e_url">
@@ -273,8 +322,17 @@ table.dataTable tr.odd td.sorting_1 {
                       <button type="submit" class="btn btn-primary" style="text-align: center;margin-left: 200px;margin-right: 200px;"  id="submitform" class="form-control">Add Event</button>
                       </div>
                     </form>
-                 
 
+
+                    <form  style="max-width:500px;margin:auto"  id="img_upload" name="img_upload" target="uploadTarget" action="../ds_admin/uploadimage.php" enctype="multipart/form-data" method="post" >                       
+                      <div class="input-group">
+                       <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                       <input type="file"  placeholder="Add Event image"  id="E_img" class="form-control" name="E_img" />    
+                      </div>
+                      <div class="input-group">
+                          <button type="submit" class="btn btn-primary"  style="text-align: center;margin-left: 200px;margin-right: 200px;"  id="submitimage" class="form-control">Add Event Image</button>
+                          </div>
+                    </form>
                 </div>
                   
               </div>
@@ -288,38 +346,102 @@ table.dataTable tr.odd td.sorting_1 {
 
         </div>
 
+
+        <div id="myModal4" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+          <!-- Modal content -->
+          <div class="modal-content" style="margin-top: 60px;">
+            <div class="modal-header">
+              <button  type="button" class="close" >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                  <form style="max-width:500px;margin:auto"  name="addeventform" autocomplete="on" method="post">
+                    <h3 style="text-align: center">Add New Event</h3>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+                        <input   type="text" placeholder="Event Title" class="form-control" id="E_Title" name="E_Title" required>
+                      </div>
+                    
+                    <div class="input-container" >
+                    <div class='input-group date'   id='datetimepicker2' onclick="datepicker();">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        <input  type='text' placeholder="Event Date- YYYY-MM-DD"  id="E_Date" name="E_Date" class="form-control" required/>
+                        
+                    </div>
+                  </div>
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                      <input   type='text' placeholder="Event Start time- HH-MM"  id="E_Starttime" class="form-control" name="E_Starttime">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        <input type='text' placeholder="Event End time- HH-MM"  id="E_Endtime"  class="form-control" name="E_Endtime" >
+                      </div>
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                          <input type="file" accept="image/*" placeholder="Add Event image"  id="E_img" class="form-control" name="E_img" >
+                      </div>
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
+                          <input type="url" placeholder="Event website" class="form-control"  id="e_url" name="e_url">
+                      </div>                 
+                    
+                    <div class="input-group">
+                    <button type="submit" class="btn btn-primary" style="text-align: center;margin-left: 200px;margin-right: 200px;"  id="submitform" class="form-control">Add Event</button>
+                    </div>
+                  </form>
+                  <form  style="max-width:500px;margin:auto"  id="img_upload" name="img_upload" target="uploadTarget" action="../ds_admin/uploadimage.php" enctype="multipart/form-data" method="post" >                       
+                    <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                     <input type="file"  placeholder="Add Event image"  id="E_img" class="form-control" name="E_img" />    
+                    </div>
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-primary" style="text-align: center;margin-left: 200px;margin-right: 200px;"  id="submitimage" class="form-control">Add Event Image</button>
+                        </div>
+                  </form>
+               
+      
+              </div>
+                
+            </div>
+            
+            <div class="modal-footer">
+                <!--<p style="text-align: center; position: relative">
+                 <a class="btn btn-info" href="" role="button" style="background-color: #0e3558;text-decoration-color: white"  onclick="AddEvent()"></a>
+               </p>-->
+            </div>
+          </div>
+      
+      </div>
+
+        
+
 <script>
+$("#E_img").on('change', function(){
+        var image = $('#E_img').val();
+        var img_ex = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+        
+        //validate file type
+        if(!img_ex.exec(image)){
+            alert('Please upload only .jpg/.jpeg/.png/.gif file.');
+            $('#E_img').val('');
+            return false;
+        }else{
+            $('.uploadProcess').show();
+          // $('#uploadForm').hide();
+            $( "#img_upload" ).submit();
+        }
+});
 $(document).ready(function(){
   $("#myBtn2").click(function(){
+
     $("#myModal3").modal({show: true});
+    
   });
 });  
-$('#submitform').on('click',function AddEvent() {
-  var formdata = new Array(document.getElementById("E_Title").value, document.getElementById("E_Date").value, document.getElementById("E_Starttime").value, document.getElementById("E_Endtime").value,document.getElementById("E_img").value,document.getElementById("e_url").value);
-  var jsondata= JSON.stringify(formdata);
-   console.log(jsondata);
-       $.ajax({
-         type:"POST",
-         url: "../ds_admin/php_action/addevent.php",
-         data:{newdata:jsondata},
-         dataType:"JSON",
-         success:function(data,status,jqXHR) {
-           console.log(data); 
-           var table = $('#current-event-grid').DataTable();
-           table.ajax.reload(null,false);
-         },
-         error:function(data,status,jqXHR){
-          console.log(data);
-          var table = $('#current-event-grid').DataTable();
-          table.ajax.reload(null,false);$("#addeventform").append("<p>added successfully</p>");
-          alert("error");
-          
-         }
-       }   
-       
-      );
-      window.location = '/';
-});
+
 
 
 function RemoveEvent(val){
@@ -328,10 +450,40 @@ function RemoveEvent(val){
   var jsondata=JSON.stringify(eid);
  
   console.log(jsondata);
-  alert(jsondata);
-  $.ajax({
+  var r=confirm("Confirm deleting Even number:"+jsondata);
+  if (r == true) {
+   $.ajax({
          type:"POST",
          url: "../ds_admin/php_action/deleteevent.php",
+         data: {newdata:jsondata},
+         dataType:"JSON",
+         success:function(response) {
+             console.log(response); 
+             var table = $('#current-event-grid').DataTable();
+             table.ajax.reload(null,false);
+             
+         },
+         error:function(data,status,jqXHR){
+          console.log(data);
+          var table = $('#current-event-grid').DataTable();
+          table.ajax.reload(null,false);
+         }
+         } );
+  }
+  else{
+
+  }  
+}
+function UpdateEvent(val){
+  var eid=val;
+
+  var jsondata=JSON.stringify(eid);
+ 
+  console.log(jsondata);
+  //alert(jsondata);
+  $.ajax({
+         type:"POST",
+         url: "../ds_admin/php_action/updateevent.php",
          data: {newdata:jsondata},
          dataType:"JSON",
          success:function(response) {

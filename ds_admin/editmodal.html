@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Website</title>
+    <meta charset="utf-8">
+
+</head>
+<style>
+
+
+.input-field{
+  width:180px; 
+  margin: 0 20px 10px 20px;
+}
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 60%;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+.modal-header {
+  padding: 2px 16px;
+  background-color: white;
+  color: white;
+}
+.modal-footer {
+  padding: 2px 16px;
+   color: white;
+   text-align: center;
+  
+  margin: auto;
+}
+
+
+/* Modal Content */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  padding-left: 20 px;
+  padding-right: 50px;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(117, 115, 115, 0.9); /* Black w/ opacity */
+ 
+}
+.modal-backdrop {
+    /* position: fixed; */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    background-color: #000;
+}
+.modal-open .modal{
+  overflow-x: hidden;
+  overflow-y:hidden;
+}
+
+/* The Close Button */
+
+.close {
+  position: relative;
+  top: 15px;
+  right: 35px;
+  color: #444242a8;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s; 
+  padding-bottom: 17px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  top: 2px;
+  left: 0px;
+
+}
+
+.close:hover,
+.close:focus {
+  color: rgba(17, 14, 14, 0.795);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary{
+  background-color:#0e3558;
+  border-color: #0e3558;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-right-width: 25px;
+  border-top-width: 9px;
+  border-left-width: 25px;
+  border-bottom-width: 7px;
+  font-size: 12px;
+  color: white ;
+}
+.btn-primary :hover{
+  color: #fff;
+  background-color: transparent;
+  border-color: #0e3558;
+}
+.input-group{
+  margin-bottom: 5px;
+}
+</style>
+<div id="myModal4" class="modal fade" role="dialog">
+    <!-- Modal content -->
+    <div class="modal-content" style="margin-top: 60px;">
+      <div class="modal-header">
+        <button  type="button" class="close" data-dismiss="modal" >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+            <form style="max-width:500px;margin:auto"  name="addeventform" autocomplete="on" method="post">
+              <h3 style="text-align: center">Add New Event</h3>
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+                  <input   type="text" placeholder="Event Title" class="form-control" id="E_Title" name="E_Title" required>
+                </div>
+              
+              <div class="input-container" >
+              <div class='input-group date'   id='datetimepicker2' onclick="datepicker();">
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                  <input  type='text' placeholder="Event Date- YYYY-MM-DD"  id="E_Date" name="E_Date" class="form-control" required/>
+                  
+              </div>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                <input   type='text' placeholder="Event Start time- HH-MM"  id="E_Starttime" class="form-control" name="E_Starttime">
+              </div>
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                  <input type='text' placeholder="Event End time- HH-MM"  id="E_Endtime"  class="form-control" name="E_Endtime" >
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                    <input type="file" accept="image/*" placeholder="Add Event image"  id="E_img" class="form-control" name="E_img" >
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
+                    <input type="url" placeholder="Event website" class="form-control"  id="e_url" name="e_url">
+                </div>                 
+              
+              <div class="input-group">
+              <button type="submit" class="btn btn-primary" style="text-align: center;margin-left: 200px;margin-right: 200px;"  id="submitform" class="form-control">Add Event</button>
+              </div>
+            </form>
+         
+
+        </div>
+          
+      </div>
+      
+      <div class="modal-footer">
+          <!--<p style="text-align: center; position: relative">
+           <a class="btn btn-info" href="" role="button" style="background-color: #0e3558;text-decoration-color: white"  onclick="AddEvent()"></a>
+         </p>-->
+      </div>
+    </div>
+
+</div>
