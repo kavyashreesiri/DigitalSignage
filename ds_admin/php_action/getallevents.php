@@ -9,7 +9,7 @@ $columns = array(
     2=>'E_img',
     3=>'E_Date',
     4=>'E_Starttime',
-    5=> 'E_url', 
+    5=>'E_url', 
     6=>'E_Endtime'
 
   );
