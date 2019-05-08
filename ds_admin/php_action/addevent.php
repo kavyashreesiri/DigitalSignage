@@ -20,10 +20,9 @@ $result = $conn->query($sql);
 if($conn->query($sql)==TRUE)
 {
     echo "success";
-    //header('Location:../addevent.html');
+   
    
 }
 else{
      echo "Error :" .$sql."<br>".$conn->error;
 }
-//mysql_close($conn);
